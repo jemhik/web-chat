@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -21,10 +23,10 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest registerRequest) {
         if (userService.findByUsername(registerRequest.getUsername()) != null) {
-            return ResponseEntity.badRequest().body("Username is already taken");
+            return ResponseEntity.badRequest().body(Map.of("message", "Username is already taken"));
         }
         userService.registerUser(registerRequest.getUsername(), registerRequest.getPassword());
-        return ResponseEntity.ok("User registered successfully");
+      return ResponseEntity.ok().body(Map.of("message", "User registered successfully"));
     }
 
     @PostMapping("/login")
@@ -37,7 +39,7 @@ public class UserController {
 
             return ResponseEntity.ok(loginResponse);
         }
-        return ResponseEntity.status(401).body("Invalid username or password");
+        return ResponseEntity.badRequest().body(Map.of("message", "Invalid username or password"));
     }
 
 }
