@@ -1,0 +1,75 @@
+/* Body Styling */
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Container Styling */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card Styling */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Field Styling */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+input {
+  font-size: 1rem;
+}
+
+/* Button Styling */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+button:active {
+  background-color: #0d47a1;
+}
+
+/* Register Link Styling */
+.register-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.register-link a {
+  text-decoration: none;
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

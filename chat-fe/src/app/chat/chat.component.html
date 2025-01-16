@@ -1,0 +1,31 @@
+<mat-card class="chat-container">
+  <mat-card-title>Chat Room</mat-card-title>
+
+  <!-- Message List -->
+  <div class="messages-container" *ngIf="messages && messages.length > 0">
+    <div *ngFor="let message of messages" class="message-item">
+      <mat-card class="message-card">
+        <mat-card-content>
+          <div class="message-sender">{{ message.senderName }}</div>
+          <div class="message-content">{{ message.content }}</div>
+          <div class="message-timestamp">{{ message.timestamp | date: 'shortTime' }}</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="!messages || messages.length === 0" class="no-messages">
+    No messages yet. Start the conversation!
+  </div>
+
+  <!-- Message Input -->
+  <form [formGroup]="messageForm" class="message-form" (ngSubmit)="sendMessage()">
+    <mat-form-field appearance="fill" class="message-input">
+      <mat-label>Type your message</mat-label>
+      <input matInput type="text" formControlName="message"/>
+      <mat-error *ngIf="messageForm.get('message')?.hasError('maxlength')">
+        Message cannot exceed 200 characters
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="messageForm.invalid">Send</button>
+  </form>
+</mat-card>

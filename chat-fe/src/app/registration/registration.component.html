@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-card class="login-card">
+    <mat-card-title class="card-title">Create an Account</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="username" name="username" required />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="password" name="password" type="password" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Register</button>
+      </form>
+      <div class="register-link">
+        <a routerLink="/login">Already have an account? Login</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

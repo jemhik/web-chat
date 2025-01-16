@@ -1,0 +1,13 @@
+<div class="app">
+  <header class="header">
+    <div class="header-buttons">
+      <button *ngIf="!isLoggedIn()" mat-raised-button color="primary" routerLink="/login">Login</button>
+      <button *ngIf="!isLoggedIn()" mat-raised-button color="accent" routerLink="/register">Register</button>
+      <button *ngIf="isLoggedIn()" mat-raised-button color="primary" routerLink="/chat">Chat</button>
+      <button *ngIf="isLoggedIn()" mat-raised-button color="warn" (click)="authService.logout()">Logout</button>
+    </div>
+  </header>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
