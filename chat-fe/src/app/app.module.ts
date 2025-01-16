@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {RegistrationComponent} from './registration/registration.component';
-import {LoginComponent} from './login/login.component';
+import {RegistrationComponent} from './pages/registration/registration.component';
+import {LoginComponent} from './pages/login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import { ChatComponent } from './chat/chat.component';
+import { ChatComponent } from './pages/chat/chat.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatButton, MatButtonModule} from '@angular/material/button';

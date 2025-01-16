@@ -5,17 +5,20 @@ import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   standalone: true,
   styleUrl: './login.component.css',
-  imports: [FormsModule, HttpClientModule, MatInputModule, MatButtonModule, MatCardModule, RouterLink]
+  imports: [FormsModule, HttpClientModule, MatInputModule, MatButtonModule, MatCardModule, RouterLink, NgIf]
 })
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  successMessage: string = '';
+  errorMessage: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -26,11 +29,16 @@ export class LoginComponent {
         console.log('Login successful', response);
         if (response.token) {
           localStorage.setItem('jwtToken', response.token);
+          this.successMessage = 'Login successful! Redirecting to chat...';
+          this.errorMessage = '';
           this.router.navigate(['/chat']);
         } else {
-          console.error('Token not found in response');
+          this.errorMessage = 'Token not found in response';
+          this.successMessage = '';
         }
       }, error => {
+        this.errorMessage = 'Login failed. Please try again.';
+        this.successMessage = '';
         console.error('Login failed', error);
       });
   }

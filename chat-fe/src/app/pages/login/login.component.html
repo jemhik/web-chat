@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card class="login-card">
-    <mat-card-title class="card-title">Welcome Back</mat-card-title>
+    <mat-card-title class="card-title">Login</mat-card-title>
     <mat-card-content>
       <form (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill">
@@ -13,8 +13,11 @@
         </mat-form-field>
         <button mat-raised-button color="primary" type="submit">Login</button>
       </form>
-      <div class="register-link">
-        <a routerLink="/register">Don't have an account? Register</a>
+      <div *ngIf="successMessage.length > 0" class="success-message">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage.length > 0" class="error-message">
+        {{ errorMessage }}
       </div>
     </mat-card-content>
   </mat-card>
